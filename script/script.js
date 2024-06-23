@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('product-list');
     const cartCount = document.getElementById('cart-count');
+    const searchBar = document.getElementById('search-bar');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let products = [];
 
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     function displayProducts(products) {
+        productList.innerHTML = '';
         products.forEach(product => {
             const productDiv = document.createElement('div');
             productDiv.className = 'product';
@@ -85,6 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
             position: positions[Math.floor(Math.random() * positions.length)],
         };
     }
+
+    function filterProducts(searchTerm) {
+        const filteredProducts = products.filter(product => 
+            product.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            product.desc.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        displayProducts(filteredProducts);
+    }
+
+    searchBar.addEventListener('input', (event) => {
+        const searchTerm = event.target.value;
+        filterProducts(searchTerm);
+    });
 
     updateCartCount();
 
