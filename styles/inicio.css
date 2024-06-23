@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Poppins:wght@300&family=Raleway:ital,wght@0,100;0,400;1,400&family=Roboto+Slab&display=swap');
+
+.bodyfont {
+    font-family: 'Raleway', sans-serif;
+    background-color: #141416;
+    color: #fff;
+    min-height: 100vh;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+h1.in {
+    text-shadow: -1px 1px 38px rgba(238, 218, 218, 0.85);
+}
+
+section {
+    scroll-snap-align: start;
+}
+
+img.in {
+    width: 95%;
+    margin: 30px;
+}
+
+.photo:nth-child(2) {
+    transition-delay: 200ms;
+
+}
+
+.photo:nth-child(3) {
+    transition-delay: 300ms;
+}
+
+.photo:nth-child(4) {
+    transition-delay: 400ms;
+}
+
+.photo:nth-child(5) {
+    transition-delay: 420ms;
+}
+
+.photo {
+    gap: 1em;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 88%;
+
+}
+
+section#in {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.hidd {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateX(-100%);
+    transition: all 1.9s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidd {
+        transition: none;
+    }
+}
+
+.glow {
+    animation-name: glow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0px 0px 5px #a84343, 0px 0px 5px #614ad3;
+    }
+
+    to {
+        text-shadow: 0px 0px 30px #fff, 0px 0px 20px #950ac0;
+    }
+}
+body.loading {
+    overflow: hidden;
+  }
+  
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4B0082; /* Violeta oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  #loading-message {
+    color: white;
+    font-size: 24px;
+  }
+  
+  .pixel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: #ffffff; /* Color de los píxeles */
+    animation: pixelFall linear infinite;
+  }
+  
+  @keyframes pixelFall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(200vh);
+      opacity: 1;
+    }
+  }
